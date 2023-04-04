@@ -22,6 +22,7 @@ En este repositorio se encuentra el código fuente de la página web de Grupo Ce
 
 - Visual Studio Code
 - Bootstrap (Framework)
+- Font Awesome
 - GitHub
 - W3Schools
 - Word
