@@ -1,0 +1,87 @@
+.container-fluid{
+    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.parrafos{
+    margin-top: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 1.5;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.imagen-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.imagen-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+footer {
+    padding: 20px;
+  }
+
+  .boton-facebook {
+    background-color: #3b5998;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .boton-twitter {
+    background-color: #1da1f2;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .boton-instagram {
+    background-color: #e1306c;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+ 
+.contenedor-botones {
+    display: flex;
+    justify-content: center;
+}
+
+  .botones-sociales a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 40px;
+    font-size: 20px;
+  }
+  
+  .botones-sociales a:hover {
+    transform: rotate(360deg);
+  }
+
+  .copyright {
+    float: right;
+    font-size: 14px;
+    color: #666;
+  }
