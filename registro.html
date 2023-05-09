@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="icon" href="imagenes/logo-ico.ico">
+    <link rel="stylesheet" href="css/registro.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Registro</h1>
+                <form action="" method="POST" id="formulario">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellidoPaterno" class="form-label">Apellido paterno</label>
+                        <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno" placeholder="Ingrese su apellido paterno" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellidoMaterno" class="form-label">Apellido materno</label>
+                        <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno" placeholder="Ingrese su apellido materno" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="genero" class="form-label">Género</label>
+                        <select class="form-select" id="genero" name="genero" required>
+                            <option value="0">Seleccione su género</option>
+                            <option value="1">Masculino</option>
+                            <option value="2">Femenino</option>
+                            <option value="3">Otro</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rut" class="form-label">RUT</label>
+                        <input type="text" class="form-control" id="rut" name="rut" placeholder="Ingrese su RUT" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su dirección" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Número de teléfono</label>
+                        <input type="text" class="form-control" id="telefono" name="telefono"
+                            placeholder="Ingrese su número de teléfono" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/registro.js"></script>
+</body>
+</html>
