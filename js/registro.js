@@ -1,45 +1,51 @@
 
-function validarRegistro() {
-    var nombre = document.getElementById("nombre").value;
-    var apellidoPaterno = document.getElementById("apellidoPaterno").value;
-    var apellidoMaterno = document.getElementById("apellidoMaterno").value;
-    var genero = document.getElementById("genero").value;
-    var rut = document.getElementById("rut").value;
-    var direccion = document.getElementById("direccion").value;
-    var correo = document.getElementById("correo").value;
-    var telefono = document.getElementById("telefono").value;
+const formulario = document.forms["formulario"];
+formulario.addEventListener("submit", validarRegistro);
+function validarRegistro(event) {
 
-    if (nombre == "") {
-        alert("El campo nombre es obligatorio");
-        return false;
-    }
-    if (apellidoPaterno == "") {
-        alert("El campo apellido paterno es obligatorio");
-        return false;
-    }
-    if (apellidoMaterno == "") {
-        alert("El campo apellido materno es obligatorio");
-        return false;
-    }
-    if (genero == "") {
-        alert("El campo genero es obligatorio");
-        return false;
-    }
-    if (rut == "") {
-        alert("El campo rut es obligatorio");
-        return false;
-    }
-    if (direccion == "") {
-        alert("El campo direccion es obligatorio");
-        return false;
-    }
-    if (correo == "") {
-        alert("El campo correo es obligatorio");
-        return false;
-    }
-    if (telefono == "") {
-        alert("El campo telefono es obligatorio");
-        return false;
-    }
-    return true;
+    event.preventDefault();
+
+    const nombre = formulario["nombre"].value;
+    const apellidoPaterno = formulario["apellidoPaterno"].value;
+    const apellidoMaterno = formulario["apellidoMaterno"].value;
+    const genero = formulario["genero"].value;
+    const rut = formulario["rut"].value;
+    const direccion = formulario["direccion"].value;
+    const correo = formulario["correo"].value;
+    const telefono = formulario["telefono"].value;
+
+  if (nombre.length < 3 || nombre.length > 20) {
+    alert("El nombre debe tener entre 3 y 20 caracteres.");
+    return false;
+  }
+  if (apellidoPaterno.length < 3 || apellidoPaterno.length > 20) {
+    alert("El apellido paterno debe tener entre 3 y 20 caracteres.");
+    return false;
+  }
+  if (apellidoMaterno.length < 3 || apellidoMaterno.length > 20) {
+    alert("El apellido materno debe tener entre 3 y 20 caracteres.");
+    return false;
+  }
+  if (genero === "") {
+    alert("Debe seleccionar un género.");
+    return false;
+  }
+  if (rut === "") {
+    alert("Debe ingresar su rut.");
+    return false;
+  }
+    if (direccion === "") {
+    alert("Debe ingresar su dirección.");
+    return false;
+  }
+  if (telefono.length < 9 || telefono.length > 12) {
+    alert("El celular debe tener entre 9 y 12 caracteres.");
+    return false;
+  }
+  if (correo === "") {
+    alert("Debe ingresar su correo electrónico.");
+    return false;
+  }
+  alert("El formulario ha sido enviado correctamente."); 
+  return true;
 }
