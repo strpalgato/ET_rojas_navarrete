@@ -34,6 +34,17 @@ function validarRegistro(event) {
     alert("Debe ingresar su rut.");
     return false;
   }
+
+  if (rut.length < 10) {
+    alert("El rut debe tener 10 caracteres.");
+    return false;
+  }
+
+  if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test(rut)) {
+    alert("El rut ingresado no es válido.");
+    return false;
+  }
+
     if (direccion === "") {
     alert("Debe ingresar su dirección.");
     return false;
