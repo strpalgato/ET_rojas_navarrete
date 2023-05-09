@@ -35,7 +35,7 @@ function validarRegistro(event) {
     return false;
   }
 
-  if (rut.length < 10) {
+  if (rut.length != 10) {
     alert("El rut debe tener 10 caracteres.");
     return false;
   }
