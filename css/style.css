@@ -70,6 +70,7 @@ header{
 
 footer {
     padding: 20px;
+    background-color: #333;
   }
 
   .boton-facebook {
@@ -114,5 +115,5 @@ footer {
     padding-top: 20px;
     text-align: center;
     font-size: 14px;
-    color: #666;
+    color: #c7c7c7;
   }
