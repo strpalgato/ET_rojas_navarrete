@@ -57,7 +57,7 @@ function validarRegistro(event) {
     alert("Debe ingresar su correo electrónico.");
     return false;
   }
-  if (!/\S+@\S+\.\S+/.test(correo)) {
+  if (!/\S+@\S+\.(com|cl)$/.test(correo)) {
     alert("El correo ingresado no es válido.");
     return false;
   }
