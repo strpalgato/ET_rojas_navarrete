@@ -12,11 +12,14 @@ En este repositorio se encuentra el código fuente de la página web de Grupo Ce
 - Inicio
 - Acerca de
 - Galería de imágenes
+- Registro
+- Ubicación
 
 ## Lenguajes utilizados
 
 - HTML
 - CSS
+- JS
 
 ## Herramientas utilizadas
 
