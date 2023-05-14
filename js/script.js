@@ -18,12 +18,24 @@ function validarRegistro(event) {
     alert("El nombre debe tener entre 3 y 20 caracteres.");
     return false;
   }
+  if (!/^[a-zA-Z]+$/.test(nombre)) {
+    alert("El nombre no puede contener números.");
+    return false;
+  }
   if (apellidoPaterno.length < 3 || apellidoPaterno.length > 20) {
     alert("El apellido paterno debe tener entre 3 y 20 caracteres.");
     return false;
   }
+  if (!/^[a-zA-Z]+$/.test(apellidoPaterno)) {
+    alert("El apellido paterno no puede contener números.");
+    return false;
+  }
   if (apellidoMaterno.length < 3 || apellidoMaterno.length > 20) {
     alert("El apellido materno debe tener entre 3 y 20 caracteres.");
+    return false;
+  }
+  if (!/^[a-zA-Z]+$/.test(apellidoMaterno)) {
+    alert("El apellido materno no puede contener números.");
     return false;
   }
   if (genero === "") {
@@ -34,17 +46,14 @@ function validarRegistro(event) {
     alert("Debe ingresar su rut.");
     return false;
   }
-
   if (rut.length != 10) {
     alert("El rut debe tener 10 caracteres.");
     return false;
   }
-
   if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test(rut)) {
     alert("El rut ingresado no es válido.");
     return false;
   }
-
     if (direccion === "") {
     alert("Debe ingresar su dirección.");
     return false;
