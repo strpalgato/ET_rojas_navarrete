@@ -20,15 +20,15 @@ En este repositorio se encuentra el código fuente de la página web de Grupo Ce
 - HTML
 - CSS
 - JS
+- Python
 
 ## Herramientas utilizadas
 
 - Visual Studio Code
 - Bootstrap (Framework)
-- Font Awesome
+- Django (Framework)
+- Font Awesome (Framework)
 - GitHub
-- W3Schools
-- Word
 
 ## Autores
 
