@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Enlace al archivo CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'artes/css/style.css'%}">
+  <link rel="icon" href="{% static 'artes/imagenes/logo-ico.ico'%}">
+  <title>Grupo Cero</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="{% static 'artes/imagenes/grupo.png'%}" alt="Logo de la empresa">
+  </div>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="index">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mision">Acerca de</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="galeria">Galería</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="registro">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ubicacion">Encuéntranos</a>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Bienvenido</h1>
+    <p>Grupo Cero - Cooperativa de artistas plásticos</p>
+  </header>
+  <div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'artes/imagenes/inicio1.jpg'%}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'artes/imagenes/inicio2.jpg'%}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'artes/imagenes/inicio3.jpg'%}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 grid-parrafos">
+        <h2>Introducción a las Artes Plásticas</h2>
+        <p>
+          Las artes plásticas se refieren a una forma de expresión artística en la que se utilizan materiales como el
+          barro, la madera, la piedra, el metal, la tela, el vidrio y otros elementos para crear obras de arte
+          tridimensionales. También se incluyen dentro de las artes plásticas las obras bidimensionales, como los
+          dibujos, pinturas y grabados. Estas obras se caracterizan por ser tangibles y ocupar un espacio físico, lo que
+          las diferencia de otras formas de arte, como la música o la literatura.
+          <br> En las artes plásticas, el artista utiliza su creatividad y habilidades técnicas para dar forma a sus
+          ideas y emociones, creando obras que pueden ser apreciadas por el público en general o por un grupo específico
+          de personas. Las obras de arte plástico pueden tener una variedad de propósitos, desde la representación de la
+          belleza y la estética, hasta la denuncia social y la crítica política. En definitiva, las artes plásticas son
+          una forma de comunicación visual que permite al artista expresarse a través de diferentes materiales y
+          técnicas.
+        </p>
+      </div>
+      <div class="col-md-4 grid-imagenes">
+        <img src="{% static 'artes/imagenes/imagen1.jpg'%}" alt="Imagen 1" style="padding-bottom: 60px;">
+        <img src="{% static 'artes/imagenes/imagen2.jpg'%}" alt="Imagen 2">
+      </div>
+      <div class="col-md-4 grid-parrafos">
+        <h2>Técnicas y estilos en las Artes Plásticas</h2>
+        <p>
+          Las artes plásticas comprenden una gran variedad de técnicas y estilos, desde la escultura clásica hasta el
+          arte urbano contemporáneo. En la escultura, el artista utiliza materiales como el mármol, el bronce o la
+          arcilla para crear formas tridimensionales, mientras que en la pintura y el dibujo se utilizan diferentes
+          materiales como óleo, acuarela, lápices y carbón para crear obras bidimensionales. Otros estilos como el
+          collage, el grabado y la fotografía también forman parte de las artes plásticas.
+          <br>
+          Además de las técnicas y materiales utilizados, las artes plásticas también se caracterizan por su estilo, que
+          puede variar desde el realismo hasta el arte abstracto. El realismo busca representar el mundo tal como es,
+          mientras que el arte abstracto se enfoca en la forma, el color y la textura de las obras. Otros estilos
+          populares incluyen el impresionismo, el expresionismo y el surrealismo, cada uno con sus propias técnicas y
+          características únicas.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="contenedor-botones">
+      <div class="botones-sociales">
+        <a href="https://facebook.com/" target="_blank" class="boton-facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/" target="_blank" class="boton-twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/" target="_blank" class="boton-instagram"><i
+            class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="contenedor-copyright">
+      <p class="copyright">@copyright Derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Importar los scripts de Bootstrap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/dd93a639fd.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
