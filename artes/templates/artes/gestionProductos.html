@@ -124,8 +124,10 @@
                 <td>${{producto.precio}} CLP</td>
                 <td><img src="{{ producto.imagen.url }}" alt="Imagen del Producto" style="width: 50%; height: auto;"></td>
                 <td>
-                  <a href="editarProducto/{{producto.id}}" class="btn btn-warning text-white">Editar</a>
-                  <a href="eliminar/{{producto.id}}" class="btn btn-danger text-white">Eliminar</a>
+                    <a href="editarProducto/{{producto.id}}" class="btn btn-warning text-white">Editar</a>
+                </td>
+                <td>
+                    <a href="eliminarProducto/{{producto.id}}" class="btn btn-danger text-white">Eliminar</a>
                 </td>
               {% endfor %}
             </tbody>
