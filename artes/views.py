@@ -43,6 +43,21 @@ def productos(request):
     context = {'productos': productos}
     return render(request, 'artes/productos.html', context)
 
+@login_required
+def gestionProductos(request):
+    productos = Producto.objects.all()
+    context = {'productos': productos}
+
+    return render(request, "artes/gestionProductos.html", context)
+
+def guardarProducto(request):
+    nombre = request.POST['txtNombre']
+    size = request.POST['txtSize']
+    tecnica = request.POST['txtTecnica']
+    precio = request.POST['numPrecio']
+    imagen = request.FILES['imagenProducto']
+    producto = Producto.objects.create(nombre=nombre, size=size, tecnica=tecnica, precio=precio, imagen=imagen)
+    return redirect('gestionProductos')
 def exit(request):
     logout(request)
     return redirect('index')
