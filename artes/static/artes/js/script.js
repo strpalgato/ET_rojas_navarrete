@@ -83,10 +83,10 @@ function validarRegistro(event) {
   return true;
 }
 
-function iniciarMap(){
+function initMap(){
     var coord = {lat:-33.437348 ,lng: -70.637174};
     var map = new google.maps.Map(document.getElementById('map'),{
-      zoom: 15,
+      zoom: 4,
       center: coord
     });
     var marker = new google.maps.Marker({

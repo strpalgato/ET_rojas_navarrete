@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Producto
 
 # Create your views here.
 
@@ -18,6 +19,8 @@ def registro(request):
     context={}
     return render(request, "artes/registro.html", context)
 
-def ubicacion(request):
-    context={}
-    return render(request, "artes/ubicacion.html", context)
+def productos(request):
+    # Lógica para obtener todos los productos
+    productos = Producto.objects.all()
+    context = {'productos': productos}
+    return render(request, 'artes/productos.html', context)
