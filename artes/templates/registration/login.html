@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Enlace al archivo CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'artes/css/login.css'%}">
+  <link rel="icon" href="{% static 'artes/imagenes/logo-ico.ico'%}">
+  <title>Grupo Cero</title>
+</head>
+
+<body>
+  <div class="logo-container">
+    <img src="{% static 'artes/imagenes/grupo.png'%}" alt="Logo de la empresa">
+  </div>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="index">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mision">Acerca de</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="galeria">Galería</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="productos">Productos</a>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Login</h1>
+    <p>Grupo Cero - Cooperativa de artistas plásticos</p>
+  </header>
+
+
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="username">Nombre de usuario</label>
+      <input type="text" class="form-control" id="username" name="username" placeholder="Ingrese su nombre de usuario">
+    </div>
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña">
+    </div>
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+  </form>
+  
+
+
+
+  <footer>
+    <div class="contenedor-botones">
+      <div class="botones-sociales">
+        <a href="https://facebook.com/" target="_blank" class="boton-facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/" target="_blank" class="boton-twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/" target="_blank" class="boton-instagram"><i
+            class="fab fa-instagram"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank" class="boton-whatsapp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="contenedor-copyright">
+      <p class="copyright">@copyright Derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Importar los scripts de Bootstrap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/dd93a639fd.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

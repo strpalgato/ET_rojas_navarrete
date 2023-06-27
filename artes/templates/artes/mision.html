@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -14,7 +15,9 @@
 </head>
 
 <body>
-
+  <div class="logo-container">
+    <img src="{% static 'artes/imagenes/grupo.png'%}" alt="Logo de la empresa">
+  </div>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -38,6 +41,7 @@
       </div>
     </div>
   </nav>
+  
   <header>
     <h1>Misión, Visión y Valores</h1>
     <p>Grupo Cero - Cooperativa de artistas plásticos</p>
