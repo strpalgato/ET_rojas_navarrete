@@ -87,11 +87,6 @@ h1{
   margin-right: 10px;
 }
 
-#map {
-  height: 500px;
-  width: 500px;
-}
-
 
 footer {
     padding: 20px;
@@ -115,6 +110,14 @@ footer {
     color: #fff;
     transition: all 0.3s ease-in-out;
   }
+
+  .boton-whatsapp {
+    background-color: #25D366;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  
  
 .contenedor-botones {
     display: flex;
@@ -143,3 +146,4 @@ footer {
     font-size: 14px;
     color: #c7c7c7;
   }
+
