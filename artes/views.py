@@ -50,6 +50,10 @@ def gestionProductos(request):
 
     return render(request, "artes/gestionProductos.html", context)
 
+def edicionProductos(request):
+    productos = Producto.objects.get(id=id)
+    return render(request, "artes/edicionProductos.html", {'productos': productos})
+
 def guardarProducto(request):
     nombre = request.POST['txtNombre']
     size = request.POST['txtSize']
@@ -58,6 +62,28 @@ def guardarProducto(request):
     imagen = request.FILES['imagenProducto']
     producto = Producto.objects.create(nombre=nombre, size=size, tecnica=tecnica, precio=precio, imagen=imagen)
     return redirect('gestionProductos')
+
+def editarProducto(request, id):
+    id = request.POST['txtId']
+    nombre = request.POST['txtNombre']
+    size = request.POST['txtSize']
+    tecnica = request.POST['txtTecnica']
+    precio = request.POST['numPrecio']
+    imagen = request.FILES['imagenProducto']
+
+    producto = Producto.objects.get(id=id)
+    producto.nombre = nombre
+    producto.size = size
+    producto.tecnica = tecnica
+    producto.precio = precio
+    producto.imagen = imagen
+    producto.save()
+    return redirect('gestionProductos')
+def eliminarProducto(request, id):
+    producto = Producto.objects.get(id=id)
+    producto.delete()
+    return redirect('gestionProductos')
+
 def exit(request):
     logout(request)
     return redirect('index')
