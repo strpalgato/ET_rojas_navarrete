@@ -25,6 +25,8 @@
   color: #000;
 }
 
+
+
 @media (max-width: 767px) {
   .nav-link {
     margin: 0;
