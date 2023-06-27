@@ -105,3 +105,10 @@ footer {
   font-size: 14px;
   color: #c7c7c7;
 }
+
+th,
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+

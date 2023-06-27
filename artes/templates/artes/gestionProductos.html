@@ -62,7 +62,7 @@
     </nav>
 
     <header>
-      <h1>Productos</h1>
+      <h1>CRUD</h1>
       <p>Grupo Cero - Cooperativa de artistas plásticos</p>
     </header>
 
@@ -70,24 +70,28 @@
 
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-        <h2>Gestión</h2>
-        <div class="card">
+        <h2 style="text-align: center;">Gestión</h2>
+        <div class="card" style="margin-left: 10%;">
           <div class="card-body">
             <form action="guardarProducto/" method="post" enctype="multipart/form-data">{% csrf_token %}
               <div class="form-group">
-                <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre" maxlength="50" required>
+                <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Codigo"  maxlength="10" required>
               </div>
               <br>
               <div class="form-group">
-                <input type="text" id="txtSize" name="txtSize" class="form-control" placeholder="Tamaño" maxlength="30" required>
+                <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre"  maxlength="50" required>
               </div>
               <br>
               <div class="form-group">
-                <input type="text" id="txtTecnica" name="txtTecnica" class="form-control" placeholder="Técnica"  maxlength="50" required>
+                <input type="text" id="txtSize" name="txtSize" class="form-control" placeholder="Tamaño"  maxlength="30" required>
               </div>
               <br>
               <div class="form-group">
-                <input type="number" id="numPrecio" name="numPrecio" class="form-control" placeholder="Precio"  min="0" step="0.001" required>
+                <input type="text" id="txtTecnica" name="txtTecnica" class="form-control" placeholder="Técnica"   maxlength="50" required>
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="number" id="numPrecio" name="numPrecio" class="form-control"  placeholder="Precio"   min="0" step="0.001" required>
               </div>
               <br>
               <div class="form-group">
@@ -95,44 +99,50 @@
               </div>
               <br>
               <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                <button type="submit" class="btn btn-success btn-block text-white" style="width: 100%;">Guardar</button>
               </div>
             </form>
           </div>
         </div>
       </div>
       <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-        <h2>Listado de Productos</h2>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Tamaño</th>
-                <th>Técnica</th>
-                <th>Precio</th>
-                <th>Imágen</th>
-                <th colspan="">Opciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for producto in productos %}
-              <tr>
-                <td>{{producto.nombre}}</td>
-                <td>{{producto.size}}</td>
-                <td>{{producto.tecnica}}</td>
-                <td>${{producto.precio}} CLP</td>
-                <td><img src="{{ producto.imagen.url }}" alt="Imagen del Producto" style="width: 50%; height: auto;"></td>
-                <td>
-                    <a href="editarProducto/{{producto.id}}" class="btn btn-warning text-white">Editar</a>
-                </td>
-                <td>
-                    <a href="eliminarProducto/{{producto.id}}" class="btn btn-danger text-white">Eliminar</a>
-                </td>
-              {% endfor %}
-            </tbody>
-          </table>
+        <h2 style="text-align: left;">Listado de Productos</h2>
+        <div class="card" style="width: 95%;">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr style="text-align: center;vertical-align: middle;">
+                    <th>Nombre</th>
+                    <th>Tamaño</th>
+                    <th>Técnica</th>
+                    <th>Precio</th>
+                    <th>Imágen</th>
+                    <th>Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for producto in productos %}
+                  <tr style="text-align: center;vertical-align: middle;">
+                    <td style="width: 16%;">{{producto.nombre}}</td>
+                    <td style="width: 10%;">{{producto.size}}</td>
+                    <td style="width: 16%;">{{producto.tecnica}}</td>
+                    <td style="width: 10%;">${{producto.precio}} CLP</td>
+                    <td><img src="{{ producto.imagen.url }}" alt="Imagen del Producto" style="width: 70%; height: auto;"></td>
+                    <td class="text-center">
+                      <div class="btn-group" role="group" aria-label="Opciones">
+                        <a href="edicionProductos/{{producto.codigo}}" class="btn btn-warning text-white">Editar</a>         
+                        <a href="eliminarProducto/{{producto.codigo}}" class="btn btn-danger text-white">Eliminar</a>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
+        
       </div>
     </div>
 

@@ -5,7 +5,7 @@ from django.db import models
 from django.db import models
 
 class Producto(models.Model):
-    id = models.AutoField(primary_key=True)
+    codigo = models.CharField(max_length=10)
     nombre = models.CharField(max_length=100)
     size = models.CharField(max_length=100) #tamaño del producto
     tecnica = models.CharField(max_length=100) #tecnica del producto

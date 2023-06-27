@@ -50,37 +50,38 @@ def gestionProductos(request):
 
     return render(request, "artes/gestionProductos.html", context)
 
-def edicionProductos(request):
-    productos = Producto.objects.get(id=id)
+def edicionProductos(request, codigo):
+    productos = Producto.objects.get(codigo=codigo)
     return render(request, "artes/edicionProductos.html", {'productos': productos})
 
 def guardarProducto(request):
+    codigo = request.POST['txtCodigo']
     nombre = request.POST['txtNombre']
     size = request.POST['txtSize']
     tecnica = request.POST['txtTecnica']
     precio = request.POST['numPrecio']
     imagen = request.FILES['imagenProducto']
-    producto = Producto.objects.create(nombre=nombre, size=size, tecnica=tecnica, precio=precio, imagen=imagen)
+    producto = Producto.objects.create(codigo=codigo,nombre=nombre, size=size, tecnica=tecnica, precio=precio, imagen=imagen)
     return redirect('gestionProductos')
 
-def editarProducto(request, id):
-    id = request.POST['txtId']
+def editarProducto(request):
+    codigo = request.POST['txtCodigo']
     nombre = request.POST['txtNombre']
     size = request.POST['txtSize']
     tecnica = request.POST['txtTecnica']
     precio = request.POST['numPrecio']
     imagen = request.FILES['imagenProducto']
 
-    producto = Producto.objects.get(id=id)
-    producto.nombre = nombre
-    producto.size = size
-    producto.tecnica = tecnica
-    producto.precio = precio
-    producto.imagen = imagen
-    producto.save()
+    productos = Producto.objects.get(codigo=codigo)
+    productos.nombre = nombre
+    productos.size = size
+    productos.tecnica = tecnica
+    productos.precio = precio
+    productos.imagen = imagen
+    productos.save()
     return redirect('gestionProductos')
-def eliminarProducto(request, id):
-    producto = Producto.objects.get(id=id)
+def eliminarProducto(request, codigo):
+    producto = Producto.objects.get(codigo=codigo)
     producto.delete()
     return redirect('gestionProductos')
 
