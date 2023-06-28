@@ -46,7 +46,15 @@
             <a class="nav-link" href={% url 'login' %}>Ingresar</a>
           {% endif %}
           <a class="nav-link" href="register">Registrarse</a>
+
+          {% if user.is_superuser %}
+            <a class="nav-link" href="{% url 'gestionProductos' %}">Crud</a>
+          {% else %}
+            {% comment %} No aparece el Crud {% endcomment %}
+          {% endif %}
+
         </div>
+
       </div>
     </div>
   </nav>

@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 # Create your views here.
 
@@ -43,13 +44,30 @@ def productos(request):
     context = {'productos': productos}
     return render(request, 'artes/productos.html', context)
 
+
+
+def admin_required(view_func):
+    def wrapper(request, *args, **kwargs):
+        if not request.user.is_authenticated or not request.user.is_staff:
+            # Redirigir al formulario de inicio de sesión personalizado
+            messages.error(request, 'Se requieren permisos de administrador para acceder a esta página.')
+            return redirect('login')
+        return view_func(request, *args, **kwargs)
+    return wrapper
+
+
+
 @login_required
+@admin_required
 def gestionProductos(request):
     productos = Producto.objects.all()
     context = {'productos': productos}
 
     return render(request, "artes/gestionProductos.html", context)
 
+
+@login_required
+@admin_required
 def edicionProductos(request, codigo):
     productos = Producto.objects.get(codigo=codigo)
     return render(request, "artes/edicionProductos.html", {'productos': productos})
