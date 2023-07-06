@@ -11,6 +11,14 @@
   <br>
   <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-dismissible alert-success" style="margin-left: 10%;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong class="text-dark">{{ message }}</strong>
+      </div>
+      {% endfor %}
+      {% endif %}
       <h2 style="text-align: center;">Gestión</h2>
       <div class="card" style="margin-left: 10%;">
         <div class="card-body">
@@ -73,7 +81,7 @@
                   <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Opciones">
                       <a href="edicionProductos/{{producto.codigo}}" class="btn btn-warning text-white">Editar</a>         
-                      <a href="eliminarProducto/{{producto.codigo}}" class="btn btn-danger text-white">Eliminar</a>
+                      <a href="eliminarProducto/{{producto.codigo}}" class="btn btn-danger btnEliminacion" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?')">Eliminar</a>
                     </div>
                   </td>
                 </tr>
@@ -86,8 +94,4 @@
     </div>
   </div>
   <br>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
-  <script src="https://kit.fontawesome.com/dd93a639fd.js" crossorigin="anonymous"></script>
 {% endblock %}

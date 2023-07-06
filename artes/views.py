@@ -61,6 +61,7 @@ def admin_required(view_func):
 @admin_required
 def gestionProductos(request):
     productos = Producto.objects.all()
+    messages.success(request, 'Productos Listados correctamente.')
     context = {'productos': productos}
 
     return render(request, "artes/gestionProductos.html", context)
@@ -80,6 +81,7 @@ def guardarProducto(request):
     precio = request.POST['numPrecio']
     imagen = request.FILES['imagenProducto']
     producto = Producto.objects.create(codigo=codigo,nombre=nombre, size=size, tecnica=tecnica, precio=precio, imagen=imagen)
+    messages.success(request, 'Producto Guardado correctamente.')
     return redirect('gestionProductos')
 
 def editarProducto(request):
@@ -97,10 +99,12 @@ def editarProducto(request):
     productos.precio = precio
     productos.imagen = imagen
     productos.save()
+    messages.success(request, 'Producto Modificado correctamente.')
     return redirect('gestionProductos')
 def eliminarProducto(request, codigo):
     producto = Producto.objects.get(codigo=codigo)
     producto.delete()
+    messages.success(request, 'Producto Eliminado correctamente.')
     return redirect('gestionProductos')
 
 def exit(request):
