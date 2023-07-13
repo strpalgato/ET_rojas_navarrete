@@ -1,9 +1,9 @@
 {% extends 'artes/base.html' %} 
 {% load static %} 
-{% block title %} Productos {%endblock %} 
+{% block title %} Productos {% endblock %} 
 
 {% block content %}
-  <link rel="stylesheet" href="{% static 'artes/css/productos.css'%}" />
+  <link rel="stylesheet" href="{% static 'artes/css/productos.css' %}" />
   <header>
     <h1>Productos</h1>
     <p>Grupo Cero - Cooperativa de artistas plásticos</p>
@@ -16,16 +16,14 @@
       <div class="row" style="margin-left: 20px">
         {% for producto in productos %}
           <div class="col-md-3 col-sm-12 col-lg-4">
-            <div class="card" style="width: 100%">
+            <div class="card h-100" style="width: 100%">
               <img src="{{ producto.imagen.url }}" alt="Imagen del Producto"> <br>
               <div class="card-body">
-                <h5 class="card-title"> <strong>{{producto.nombre}}</strong></h5>
-                <p class="card-text"> <strong>Técnica:</strong> {{producto.tecnica}}</p>
-                <p class="card-text"> <strong>Tamaño:</strong> {{producto.size}}</p>
-                <p class="card-text"> <strong>${{producto.precio}} CLP</strong></p>
-              </div>
-              <div class="card-footer text-center">
-                <a href="#" class="btn btn-success">Añadir al carrito</a>
+                <h5 class="card-title"> <strong>{{ producto.nombre }}</strong></h5>
+                <p class="card-text"> <strong>Técnica:</strong> {{ producto.tecnica }}</p>
+                <p class="card-text"> <strong>Tamaño:</strong> {{ producto.size }}</p>
+                <p class="card-text"> <strong>${{ producto.precio|floatformat:3 }} CLP</strong></p>
+                <button class="btn btn-success" onclick="addToCart('{{ producto.codigo }}', '{{ producto.nombre }}', '{{ producto.imagen.url }}', {{ producto.precio|floatformat:3 }})">Añadir al carrito</button>
               </div>
             </div>
           </div>         
@@ -34,10 +32,182 @@
     </div>
 
     <div class="col-3">
-
+      <div class="card" style="background-color: white;">
+        <div class="card-header" style="background-color: black; color: white;">
+          <h3 style="text-align: center;">Tu Carrito</h3>
+        </div>
+        <div class="card-body">
+          <div id="cartItems">
+            <!-- Aquí se mostrarán los elementos del carrito -->
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <p style="font-weight: bold;" class="card-text">Total: <span id="cartTotal">$0.000 CLP</span></p>
+          <button class="btn btn-secondary btn-block btn-with-border" onclick="checkout()" style="background-color: black; color: white; width: 80%; ">
+            <p style="float: left; font-size: 20px; margin-left: 15%;margin-top: 5%;">Pagar</p>
+            <i class="fas fa-shopping-bag" style="float: right;font-size: 20px;margin-right: 15%;margin-top: 5%;"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
   <br>
+
+  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+  <script>
+    // Obtener el elemento del carrito
+    const cartItemsElement = document.getElementById('cartItems');
+    // Obtener el elemento del total del carrito
+    const cartTotalElement = document.getElementById('cartTotal');
+
+    // Función para agregar un producto al carrito
+    function addToCart(productCode, productName, productImageUrl, productPrice) {
+      // Verificar si el producto ya está en el carrito
+      const existingCartItem = cartItems.find(item => item.productCode === productCode);
+
+      if (existingCartItem) {
+        // Si el producto ya está en el carrito, incrementar la cantidad
+        existingCartItem.quantity++;
+        existingCartItem.totalPrice = existingCartItem.quantity * productPrice;
+      } else {
+        // Si el producto no está en el carrito, agregarlo con una cantidad inicial de 1
+        cartItems.push({ productCode, productName, quantity: 1, imageUrl: productImageUrl, unitPrice: productPrice, totalPrice: productPrice });
+      }
+
+      // Actualizar la visualización del carrito
+      renderCartItems();
+    }
+
+    // Función para eliminar un producto del carrito
+    function removeFromCart(productCode) {
+      // Filtrar los elementos del carrito para eliminar el producto específico
+      cartItems = cartItems.filter(item => item.productCode !== productCode);
+
+      // Actualizar la visualización del carrito
+      renderCartItems();
+    }
+
+    // Función para reducir la cantidad de un producto en el carrito
+    function decreaseQuantity(productCode) {
+      const cartItem = cartItems.find(item => item.productCode === productCode);
+
+      if (cartItem && cartItem.quantity > 1) {
+        cartItem.quantity--;
+        cartItem.totalPrice = cartItem.quantity * cartItem.unitPrice;
+      }
+
+      // Actualizar la visualización del carrito
+      renderCartItems();
+    }
+
+    // Función para aumentar la cantidad de un producto en el carrito
+    function increaseQuantity(productCode) {
+      const cartItem = cartItems.find(item => item.productCode === productCode);
+
+      if (cartItem) {
+        cartItem.quantity++;
+        cartItem.totalPrice = cartItem.quantity * cartItem.unitPrice;
+      }
+
+      // Actualizar la visualización del carrito
+      renderCartItems();
+    }
+
+    // Función para vaciar el carrito
+    function clearCart() {
+      cartItems = [];
+
+      // Actualizar la visualización del carrito
+      renderCartItems();
+    }
+
+    // Función para renderizar los elementos del carrito
+    function renderCartItems() {
+      // Limpiar la visualización actual del carrito
+      cartItemsElement.innerHTML = '';
+
+      // Calcular el total del carrito
+      let total = 0;
+
+      // Iterar sobre los elementos del carrito y crear los elementos de la lista
+      cartItems.forEach(item => {
+        const cardElement = document.createElement('div');
+        cardElement.className = 'card mb-3';
+
+        const cardBodyElement = document.createElement('div');
+        cardBodyElement.className = 'card-body';
+
+        const cardTitleElement = document.createElement('h5');
+        cardTitleElement.className = 'card-title';
+        cardTitleElement.textContent = item.productName;
+
+        const decreaseButton = document.createElement('button');
+        decreaseButton.innerHTML = '<i class="fas fa-minus"></i>';
+        decreaseButton.className = 'btn btn-link';
+        decreaseButton.onclick = () => decreaseQuantity(item.productCode);
+
+        decreaseButton.style.color = 'black';
+
+        const cardQuantityElement = document.createElement('span');
+        cardQuantityElement.className = 'card-quantity';
+        cardQuantityElement.textContent = item.quantity;
+
+        const increaseButton = document.createElement('button');
+        increaseButton.innerHTML = '<i class="fas fa-plus"></i>';
+        increaseButton.className = 'btn btn-link';
+        increaseButton.onclick = () => increaseQuantity(item.productCode);
+
+        increaseButton.style.color = 'black';
+
+        const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        deleteButton.className = 'btn btn-link text-danger';
+        deleteButton.onclick = () => removeFromCart(item.productCode);
+
+        const priceElement = document.createElement('span');
+        priceElement.className = 'product-price';
+        priceElement.textContent = `$${item.totalPrice.toFixed(3)} CLP`;
+
+        priceElement.style.fontWeight = 'bold';
+        total += item.totalPrice;
+
+        const productImageElement = document.createElement('img');
+        productImageElement.src = item.imageUrl;
+        productImageElement.alt = 'Miniatura del producto';
+        productImageElement.className = 'product-thumbnail';
+
+        // Establecer el estilo de tamaño de la imagen de la miniatura
+        productImageElement.style.width = '30%'; // Ajusta el tamaño según tus necesidades
+
+        cardBodyElement.appendChild(cardTitleElement);
+        cardBodyElement.appendChild(productImageElement);
+        cardBodyElement.appendChild(decreaseButton);
+        cardBodyElement.appendChild(cardQuantityElement);
+        cardBodyElement.appendChild(increaseButton);
+        cardBodyElement.appendChild(deleteButton);
+        cardBodyElement.appendChild(priceElement);
+
+        cardElement.appendChild(cardBodyElement);
+
+        cartItemsElement.appendChild(cardElement);
+      });
+
+      // Actualizar el total del carrito con 3 dígitos después de la coma
+      cartTotalElement.textContent = `$${total.toFixed(3)} CLP`;
+    }
+
+    // Función para realizar el proceso de pago
+    function checkout() {
+      // Aquí puedes implementar la lógica para procesar el pago, enviar la información al backend, etc.
+      // Por ejemplo, puedes redirigir al usuario a una página de pago externa o mostrar un formulario de pago.
+
+      // Luego de completar el proceso de pago, puedes vaciar el carrito
+      clearCart();
+    }
+
+    // Inicializar el carrito como un array vacío
+    let cartItems = [];
+  </script>
 
 {% endblock %}

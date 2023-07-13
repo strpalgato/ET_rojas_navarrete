@@ -48,6 +48,14 @@ header{
   text-align: center;
 }
 
+.product-thumbnail {
+  width: 50px; /* Ajusta el tamaño de acuerdo a tus preferencias */
+  height: 50px; /* Ajusta el tamaño de acuerdo a tus preferencias */
+  object-fit: contain;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
 
 
 footer {
@@ -111,4 +119,5 @@ td {
   text-align: center;
   vertical-align: middle;
 }
+
 
